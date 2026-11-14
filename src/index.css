@@ -1,0 +1,212 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-night: #070a1c;
+  --color-abyss: #0d1230;
+  --color-surface: #131a3d;
+  --color-surface-2: #1a2250;
+  --color-line: rgb(139 123 255 / 0.2);
+  --color-ink: #eef0ff;
+  --color-mist: #aab1d8;
+  --color-arcane: #8b7bff;
+  --color-arcane-deep: #5b47e0;
+  --color-gold: #ecca80;
+  --color-gold-deep: #c9963f;
+  --color-on-gold: #1a1205;
+  --color-rune: #5ee6f0;
+
+  --font-display: 'Cinzel', 'Times New Roman', serif;
+  --font-sans: 'Manrope', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  --ease-arcane: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-night font-sans text-ink antialiased;
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-gold);
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+
+  ::selection {
+    background: var(--color-arcane);
+    color: var(--color-night);
+  }
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex min-h-12 cursor-pointer items-center justify-center gap-2 rounded-xl px-6 text-base font-semibold transition-[transform,background-color,box-shadow,color] duration-200 ease-(--ease-arcane) select-none;
+    touch-action: manipulation;
+  }
+
+  .btn:active {
+    transform: scale(0.97);
+  }
+
+  .btn-gold {
+    @apply text-on-gold;
+    background: linear-gradient(180deg, #f6dfa4 0%, var(--color-gold) 45%, var(--color-gold-deep) 100%);
+    box-shadow:
+      0 0 0 1px rgb(255 236 190 / 0.4) inset,
+      0 10px 30px -10px rgb(236 202 128 / 0.6);
+  }
+
+  .btn-gold:hover {
+    box-shadow:
+      0 0 0 1px rgb(255 236 190 / 0.6) inset,
+      0 14px 40px -8px rgb(236 202 128 / 0.8);
+  }
+
+  .btn-ghost {
+    @apply border border-white/20 bg-white/5 text-ink backdrop-blur-sm hover:border-arcane hover:bg-arcane/15;
+  }
+
+  .eyebrow {
+    @apply font-display text-xs font-semibold tracking-[0.3em] text-gold uppercase;
+  }
+
+  .section {
+    @apply relative mx-auto w-full max-w-6xl px-5 py-20 sm:px-8 md:py-28;
+  }
+
+  .card {
+    @apply rounded-2xl border border-line bg-surface/70 backdrop-blur-sm;
+  }
+
+  .gold-text {
+    background: linear-gradient(180deg, #fff3d1 0%, var(--color-gold) 55%, var(--color-gold-deep) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .rune-divider {
+    @apply mx-auto flex items-center gap-3 text-gold/70;
+  }
+
+  .rune-divider::before,
+  .rune-divider::after {
+    content: '';
+    @apply h-px w-16 bg-linear-to-r from-transparent to-gold/60;
+  }
+
+  .rune-divider::after {
+    @apply bg-linear-to-l;
+  }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 0.7s var(--ease-arcane) var(--delay, 0ms),
+    transform 0.7s var(--ease-arcane) var(--delay, 0ms),
+    translate 0.3s var(--ease-arcane),
+    border-color 0.3s ease;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+.sparkle {
+  position: absolute;
+  border-radius: 9999px;
+  background: radial-gradient(circle, #fff 0%, rgb(139 123 255 / 0.8) 40%, transparent 70%);
+  animation: float-up var(--dur, 12s) linear infinite;
+  animation-delay: var(--delay, 0s);
+  opacity: 0;
+  pointer-events: none;
+}
+
+@keyframes float-up {
+  0% {
+    transform: translate3d(0, 0, 0) scale(0.6);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.9;
+  }
+  85% {
+    opacity: 0.7;
+  }
+  100% {
+    transform: translate3d(var(--drift, 20px), -70vh, 0) scale(1);
+    opacity: 0;
+  }
+}
+
+.hero-zoom {
+  animation: slow-zoom 24s var(--ease-arcane) both;
+}
+
+@keyframes slow-zoom {
+  from {
+    transform: scale(1.12);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+.glow-pulse {
+  animation: glow-pulse 4s ease-in-out infinite;
+}
+
+@keyframes glow-pulse {
+  0%,
+  100% {
+    opacity: 0.55;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .sparkle,
+  .hero-zoom,
+  .glow-pulse {
+    animation: none;
+  }
+
+  .sparkle {
+    display: none;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+  }
+}
