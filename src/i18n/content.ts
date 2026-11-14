@@ -269,13 +269,13 @@ export const content: Record<Locale, Content> = {
     },
     footer: {
       tagline: 'Aprenda. Evolua. Encontre a sua turma.',
-      developer: 'Desenvolvido e publicado por SZK Studio',
+      developer: 'Desenvolvido e publicado por Szolun',
       links: 'Links',
       store: 'Página na Steam',
       community: 'Comunidade',
       disclosure:
         'Divulgação de IA da Steam: alguns recursos visuais, incluindo ilustrações de personagens e elementos de interface das telas de criação e seleção, foram feitos com ferramentas de IA generativa.',
-      rights: 'Arcane Campus © SZK Studio. Todos os direitos reservados.',
+      rights: 'Arcane Campus © Szolun. Todos os direitos reservados.',
       fanNote: 'Steam e o logotipo Steam são marcas registradas da Valve Corporation.',
     },
   },
@@ -433,13 +433,13 @@ export const content: Record<Locale, Content> = {
     },
     footer: {
       tagline: 'Learn. Grow. Find your people.',
-      developer: 'Developed and published by SZK Studio',
+      developer: 'Developed and published by Szolun',
       links: 'Links',
       store: 'Steam store page',
       community: 'Community hub',
       disclosure:
         'Steam AI disclosure: some visual assets, including character illustrations and interface elements used in character creation and selection screens, were made with generative AI tools.',
-      rights: 'Arcane Campus © SZK Studio. All rights reserved.',
+      rights: 'Arcane Campus © Szolun. All rights reserved.',
       fanNote: 'Steam and the Steam logo are trademarks of Valve Corporation.',
     },
   },

@@ -1,6 +1,6 @@
 # Arcane Campus — Landing Page
 
-Landing page de divulgação de **Arcane Campus**, MMORPG 2D free-to-play da SZK Studio que chega em breve à [Steam](https://store.steampowered.com/app/5399860/Arcane_Campus/).
+Landing page de divulgação de **Arcane Campus**, MMORPG 2D free-to-play da Szolun que chega em breve à [Steam](https://store.steampowered.com/app/5399860/Arcane_Campus/).
 
 ## Stack
 
@@ -55,4 +55,4 @@ Conteúdo em `src/i18n/content.ts` (PT-BR e EN, os mesmos idiomas suportados pel
 
 ## Créditos
 
-Arte e informações do jogo © SZK Studio, extraídas da página oficial na Steam. Steam é marca registrada da Valve Corporation.
+Arte e informações do jogo © Szolun, extraídas da página oficial na Steam. Steam é marca registrada da Valve Corporation.
