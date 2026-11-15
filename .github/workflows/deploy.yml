@@ -29,6 +29,19 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v7
 
+      # Branch-mode Pages ("Deploy from a branch") publishes the raw index.html,
+      # whose /src/main.tsx is served as application/octet-stream and breaks the
+      # module script. It also races and overwrites this workflow's deploy.
+      - name: Ensure Pages builds from GitHub Actions
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          build_type="$(gh api "repos/${GITHUB_REPOSITORY}/pages" --jq .build_type)"
+          if [ "$build_type" != "workflow" ]; then
+            echo "::error::GitHub Pages source is '$build_type'. Set Settings > Pages > Source to 'GitHub Actions'."
+            exit 1
+          fi
+
       - name: Setup Node.js
         uses: actions/setup-node@v7
         with:
