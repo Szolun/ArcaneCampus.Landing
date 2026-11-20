@@ -5,8 +5,21 @@ export const STEAM_COMMUNITY_URL = 'https://steamcommunity.com/app/5399860'
 
 export type FeatureKey = 'academies' | 'mentors' | 'party' | 'events' | 'pvp' | 'guilds'
 export type PlatformKey = 'windows' | 'macos' | 'linux'
+export type ClassKey = 'fighter' | 'engineer' | 'medic' | 'musician' | 'hunter' | 'gunner' | 'lancer' | 'soulmage'
+export type Gender = 'f' | 'm'
+export type DamageType = 'physical' | 'magical'
+export type Range = 'melee' | 'ranged' | 'hybrid'
 
 type Requirement = { label: string; value: string }
+
+export type GameClass = {
+  name: string
+  role: string
+  damage: DamageType
+  range?: Range
+  summary: string
+  traits: string[]
+}
 
 export type Content = {
   meta: { title: string; description: string; htmlLang: string }
@@ -14,6 +27,7 @@ export type Content = {
   nav: {
     about: string
     features: string
+    classes: string
     events: string
     platforms: string
     faq: string
@@ -46,6 +60,22 @@ export type Content = {
     lead: string
     items: Record<FeatureKey, { title: string; body: string }>
   }
+  classes: {
+    eyebrow: string
+    title: string
+    lead: string
+    pickerLabel: string
+    genderLabel: string
+    gender: Record<Gender, string>
+    damage: Record<DamageType, string>
+    range: Record<Range, string>
+    damageLabel: string
+    rangeLabel: string
+    roleLabel: string
+    traitsTitle: string
+    artAlt: (name: string, gender: string) => string
+    items: Record<ClassKey, GameClass>
+  }
   events: {
     eyebrow: string
     title: string
@@ -63,6 +93,9 @@ export type Content = {
     langs: { name: string; detail: string }[]
     featuresTitle: string
     steamFeatures: string[]
+    priceTitle: string
+    price: string
+    priceNote: string
   }
   faq: {
     eyebrow: string
@@ -126,6 +159,7 @@ export const content: Record<Locale, Content> = {
     nav: {
       about: 'O jogo',
       features: 'Destaques',
+      classes: 'Classes',
       events: 'Eventos',
       platforms: 'Plataformas',
       faq: 'FAQ',
@@ -158,7 +192,7 @@ export const content: Record<Locale, Content> = {
       { value: '5', label: 'jogadores por grupo' },
       { value: '3', label: 'plataformas suportadas' },
       { value: '2', label: 'idiomas: PT-BR e EN' },
-      { value: 'R$ 0', label: 'gratuito para jogar' },
+      { value: 'Grátis', label: 'Free to Play' },
     ],
     features: {
       eyebrow: 'Destaques',
@@ -188,6 +222,94 @@ export const content: Record<Locale, Content> = {
         guilds: {
           title: 'Guildas & amigos',
           body: 'Adicione amigos, entre em uma guilda, busque conquistas e compartilhe cada passo da sua jornada.',
+        },
+      },
+    },
+    classes: {
+      eyebrow: 'Classes',
+      title: 'Escolha a sua classe',
+      lead: 'Oito caminhos, cada um com seu estilo de combate. Todas as classes podem ser jogadas com personagem feminino ou masculino.',
+      pickerLabel: 'Classes disponíveis',
+      genderLabel: 'Personagem',
+      gender: { f: 'Feminino', m: 'Masculino' },
+      damage: { physical: 'Dano físico', magical: 'Dano mágico' },
+      range: { melee: 'Corpo a corpo', ranged: 'À distância', hybrid: 'Corpo a corpo e à distância' },
+      damageLabel: 'Tipo de dano',
+      rangeLabel: 'Alcance',
+      roleLabel: 'Função',
+      traitsTitle: 'Pontos fortes',
+      artAlt: (name, gender) => `${name}, versão ${gender.toLowerCase()}`,
+      items: {
+        fighter: {
+          name: 'Lutador Artista',
+          role: 'Combos',
+          damage: 'physical',
+          range: 'melee',
+          summary:
+            'Especialista em ataques físicos encadeados no corpo a corpo. Dependendo da habilidade usada, combina seus golpes com dano bruto.',
+          traits: ['Ataques seguidos corpo a corpo', 'Combos com dano bruto', 'Pressão constante no alvo'],
+        },
+        engineer: {
+          name: 'Soldado Engenheiro',
+          role: 'Tanque',
+          damage: 'physical',
+          range: 'melee',
+          summary:
+            'O tanque da linha de frente: aguenta o combate corpo a corpo e responde com dano bruto. Pode usar o próprio inimigo para atordoar os outros adversários.',
+          traits: ['Alta resistência na linha de frente', 'Dano bruto', 'Usa o inimigo para causar tontura'],
+        },
+        medic: {
+          name: 'Médico da Felicidade',
+          role: 'Suporte',
+          damage: 'magical',
+          range: 'ranged',
+          summary:
+            'Suporte à distância com bastante cura e capacidade de reviver aliados. Quando parte para o ataque, sua principal habilidade causa dano massivo em um único alvo.',
+          traits: ['Bastante cura', 'Revive aliados', 'Dano massivo em alvo único'],
+        },
+        musician: {
+          name: 'Músico Espiritual',
+          role: 'Controle',
+          damage: 'magical',
+          range: 'ranged',
+          summary:
+            'Mestre do controle de grupo à distância: paralisa vários inimigos de uma vez, fortalece os aliados e enfraquece os adversários.',
+          traits: ['Paralisa vários inimigos de uma vez', 'Buffs nos aliados', 'Enfraquece os inimigos'],
+        },
+        hunter: {
+          name: 'Caçador do Sol',
+          role: 'Mascote',
+          damage: 'physical',
+          range: 'hybrid',
+          summary:
+            'Luta no corpo a corpo e à distância ao lado do seu mascote, com foco em apoiá-lo, sem abrir mão de várias habilidades de dano massivo.',
+          traits: ['Cura e ressuscita o mascote', 'Buffs em si mesmo e no mascote', 'Habilidades de dano massivo'],
+        },
+        gunner: {
+          name: 'Atirador Mágico',
+          role: 'Dano',
+          damage: 'magical',
+          range: 'ranged',
+          summary:
+            'Dano mágico bruto à distância, com habilidades de alvo único ou em área. Tem baixa resistência, mas o dano compensa.',
+          traits: ['Alvo único ou em área', 'Dano bruto', 'Baixa resistência, dano alto'],
+        },
+        lancer: {
+          name: 'Lanceiro Boreal',
+          role: 'Agilidade',
+          damage: 'physical',
+          range: 'melee',
+          summary:
+            'Classe ágil de dano bruto, com ataques seguidos e muitos contra-ataques. Esquiva com facilidade de várias habilidades e, se o inimigo estiver sentindo frio, pode esquivar até de magias.',
+          traits: ['Esquivas e contra-ataques', 'Esquiva magias de inimigos com frio', 'Congela inimigos em grupo'],
+        },
+        soulmage: {
+          name: 'Mago das Almas',
+          role: 'Debuffs',
+          damage: 'magical',
+          summary:
+            'Dano mágico bruto com combos e debuffs. Aproveita as almas dos corpos caídos no campo de batalha para ganhar vantagem.',
+          traits: ['Combos de dano bruto', 'Aplica debuffs', 'Usa as almas dos caídos'],
         },
       },
     },
@@ -229,6 +351,9 @@ export const content: Record<Locale, Content> = {
         'Steam Cloud',
         'Compartilhamento em família',
       ],
+      priceTitle: 'Preço',
+      price: 'Grátis',
+      priceNote: 'Free to Play na Steam: baixe e jogue sem pagar nada.',
     },
     faq: {
       eyebrow: 'Perguntas frequentes',
@@ -290,6 +415,7 @@ export const content: Record<Locale, Content> = {
     nav: {
       about: 'The game',
       features: 'Highlights',
+      classes: 'Classes',
       events: 'Events',
       platforms: 'Platforms',
       faq: 'FAQ',
@@ -322,7 +448,7 @@ export const content: Record<Locale, Content> = {
       { value: '5', label: 'players per party' },
       { value: '3', label: 'supported platforms' },
       { value: '2', label: 'languages: EN & PT-BR' },
-      { value: '$0', label: 'free to play' },
+      { value: 'Free', label: 'free to play' },
     ],
     features: {
       eyebrow: 'Highlights',
@@ -352,6 +478,94 @@ export const content: Record<Locale, Content> = {
         guilds: {
           title: 'Guilds & friends',
           body: 'Add friends, join a guild, pursue achievements, and share every step of your journey.',
+        },
+      },
+    },
+    classes: {
+      eyebrow: 'Classes',
+      title: 'Choose your class',
+      lead: 'Eight paths, each with its own combat style. Every class can be played as a female or male character.',
+      pickerLabel: 'Available classes',
+      genderLabel: 'Character',
+      gender: { f: 'Female', m: 'Male' },
+      damage: { physical: 'Physical damage', magical: 'Magic damage' },
+      range: { melee: 'Melee', ranged: 'Ranged', hybrid: 'Melee and ranged' },
+      damageLabel: 'Damage type',
+      rangeLabel: 'Range',
+      roleLabel: 'Role',
+      traitsTitle: 'Strengths',
+      artAlt: (name, gender) => `${name}, ${gender.toLowerCase()} version`,
+      items: {
+        fighter: {
+          name: 'Artist Fighter',
+          role: 'Combos',
+          damage: 'physical',
+          range: 'melee',
+          summary:
+            'A specialist in chained physical melee attacks. Depending on the skill used, it mixes its strikes with raw damage.',
+          traits: ['Chained melee attacks', 'Combos with raw damage', 'Constant pressure on the target'],
+        },
+        engineer: {
+          name: 'Engineer Soldier',
+          role: 'Tank',
+          damage: 'physical',
+          range: 'melee',
+          summary:
+            'The frontline tank: holds the line in melee and hits back with raw damage. It can use an enemy to stun other foes.',
+          traits: ['Sturdy frontliner', 'Raw damage', 'Uses enemies to stun others'],
+        },
+        medic: {
+          name: 'Happiness Doctor',
+          role: 'Support',
+          damage: 'magical',
+          range: 'ranged',
+          summary:
+            'A ranged support with plenty of healing and the power to revive allies. On offense, its main skill deals massive single-target damage.',
+          traits: ['Plenty of healing', 'Revives allies', 'Massive single-target damage'],
+        },
+        musician: {
+          name: 'Spirit Musician',
+          role: 'Crowd control',
+          damage: 'magical',
+          range: 'ranged',
+          summary:
+            'A ranged crowd-control master: paralyzes several enemies at once, empowers allies, and weakens foes.',
+          traits: ['Paralyzes several enemies at once', 'Buffs allies', 'Weakens enemies'],
+        },
+        hunter: {
+          name: 'Sun Hunter',
+          role: 'Pet',
+          damage: 'physical',
+          range: 'hybrid',
+          summary:
+            'Fights in melee and at range alongside a pet, focused on supporting it while still packing several massive-damage skills.',
+          traits: ['Heals and revives the pet', 'Buffs itself and the pet', 'Massive-damage skills'],
+        },
+        gunner: {
+          name: 'Magic Gunner',
+          role: 'Damage',
+          damage: 'magical',
+          range: 'ranged',
+          summary:
+            'Raw ranged magic damage with single-target or area skills. Low resistance, but the damage makes up for it.',
+          traits: ['Single-target or area', 'Raw damage', 'Low resistance, high damage'],
+        },
+        lancer: {
+          name: 'Boreal Lancer',
+          role: 'Agility',
+          damage: 'physical',
+          range: 'melee',
+          summary:
+            'An agile raw-damage class with chained attacks and plenty of counterattacks. It easily dodges many skills and, if the enemy is feeling cold, can even dodge magic.',
+          traits: ['Dodges and counterattacks', 'Dodges magic from chilled enemies', 'Freezes groups of enemies'],
+        },
+        soulmage: {
+          name: 'Soul Mage',
+          role: 'Debuffs',
+          damage: 'magical',
+          summary:
+            'Raw magic damage with combos and debuffs. It harnesses the souls of the fallen on the battlefield to gain the upper hand.',
+          traits: ['Raw-damage combos', 'Applies debuffs', 'Harnesses the souls of the fallen'],
         },
       },
     },
@@ -393,6 +607,9 @@ export const content: Record<Locale, Content> = {
         'Steam Cloud',
         'Family Sharing',
       ],
+      priceTitle: 'Price',
+      price: 'Free',
+      priceNote: 'Free to Play on Steam: download and play without paying anything.',
     },
     faq: {
       eyebrow: 'FAQ',

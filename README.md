@@ -28,10 +28,13 @@ npm run dev
 1. **Hero** — arte do campus flutuante, chamada principal e CTA de lista de desejos
 2. **O jogo** — key art, descrição e números (grupo de 5, 3 plataformas, 2 idiomas, gratuito)
 3. **Destaques** — academias, professores & alunos, grupos, eventos, PvP, guildas
-4. **Eventos** — timeline diário → anual
-5. **Plataformas** — requisitos mínimos em abas acessíveis (Windows, macOS, Linux), idiomas e recursos Steam
-6. **FAQ** — acordeão nativo com `<details>`
-7. **CTA final** e rodapé com divulgação de IA da Steam
+4. **Classes** — seletor acessível (abas com setas) das 8 classes, alternância feminino/masculino, tipo de dano, alcance, função e pontos fortes
+5. **Eventos** — timeline diário → anual
+6. **Plataformas** — preço (gratuito), requisitos mínimos em abas acessíveis (Windows, macOS, Linux), idiomas e recursos Steam
+7. **FAQ** — acordeão nativo com `<details>`
+8. **CTA final** e rodapé com divulgação de IA da Steam
+
+As artes das classes ficam em `public/images/classes/` (`<classe>-<f|m>-{400,720,thumb}.webp`), recortadas e alinhadas pelos pés num canvas 3:4.
 
 ## Design
 

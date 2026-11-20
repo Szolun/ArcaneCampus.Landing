@@ -173,6 +173,21 @@
   animation: glow-pulse 4s ease-in-out infinite;
 }
 
+.class-swap {
+  animation: class-swap 0.45s var(--ease-arcane) both;
+}
+
+@keyframes class-swap {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
 @keyframes glow-pulse {
   0%,
   100% {
@@ -196,7 +211,8 @@
 
   .sparkle,
   .hero-zoom,
-  .glow-pulse {
+  .glow-pulse,
+  .class-swap {
     animation: none;
   }
 
