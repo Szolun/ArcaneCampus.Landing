@@ -1,5 +1,5 @@
 import { useRef, useState, type KeyboardEvent } from 'react'
-import { Apple, Check, Languages, Monitor, Server, ShieldCheck, type LucideIcon } from 'lucide-react'
+import { Apple, Check, Languages, Monitor, Server, ShieldCheck, Tag, type LucideIcon } from 'lucide-react'
 import { useLocale } from '../i18n/useLocale'
 import type { PlatformKey } from '../i18n/content'
 import SectionHeading from './SectionHeading'
@@ -89,6 +89,22 @@ export default function Platforms() {
           </div>
 
           <div className="grid gap-6 lg:col-span-2">
+            <div
+              className="reveal card relative overflow-hidden border-gold/40 p-6 sm:p-8"
+              style={{ ['--delay' as string]: '40ms' }}
+            >
+              <div
+                className="pointer-events-none absolute -top-12 -right-12 size-40 rounded-full bg-gold/15 blur-2xl"
+                aria-hidden="true"
+              />
+              <h3 className="flex items-center gap-3 font-display text-lg font-semibold text-ink">
+                <Tag className="size-5 text-gold" aria-hidden="true" />
+                {t.platforms.priceTitle}
+              </h3>
+              <p className="gold-text mt-3 font-display text-5xl leading-none font-bold">{t.platforms.price}</p>
+              <p className="mt-3 text-sm leading-relaxed text-mist">{t.platforms.priceNote}</p>
+            </div>
+
             <div className="reveal card p-6 sm:p-8" style={{ ['--delay' as string]: '80ms' }}>
               <h3 className="flex items-center gap-3 font-display text-lg font-semibold text-ink">
                 <Languages className="size-5 text-rune" aria-hidden="true" />
