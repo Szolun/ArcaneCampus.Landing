@@ -44,7 +44,7 @@ export default function Navbar() {
       }
     }
     const onResize = () => {
-      if (window.innerWidth >= 1024) setOpen(false)
+      if (window.innerWidth >= 1280) setOpen(false)
     }
     document.body.style.overflow = 'hidden'
     window.addEventListener('keydown', onKey)
@@ -69,12 +69,12 @@ export default function Navbar() {
           <Logo />
         </a>
 
-        <ul className="hidden items-center gap-1 lg:flex">
+        <ul className="hidden items-center gap-1 xl:flex">
           {links.map((l) => (
             <li key={l.href}>
               <a
                 href={l.href}
-                className="rounded-lg px-3 py-2 text-sm font-medium text-mist transition-colors duration-200 hover:text-ink"
+                className="rounded-lg px-3 py-2 text-sm font-medium whitespace-nowrap text-mist transition-colors duration-200 hover:text-ink"
               >
                 {l.label}
               </a>
@@ -90,7 +90,7 @@ export default function Navbar() {
             href={STEAM_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="btn btn-gold hidden min-h-11 px-4 text-sm sm:inline-flex"
+            className="btn btn-gold hidden min-h-11 px-4 text-sm whitespace-nowrap sm:inline-flex"
           >
             <Heart className="size-4" aria-hidden="true" />
             {t.nav.wishlist}
@@ -98,7 +98,7 @@ export default function Navbar() {
           <button
             ref={toggleRef}
             type="button"
-            className="inline-flex size-11 cursor-pointer items-center justify-center rounded-xl border border-white/15 bg-white/5 text-ink transition-colors hover:bg-white/10 lg:hidden"
+            className="inline-flex size-11 cursor-pointer items-center justify-center rounded-xl border border-white/15 bg-white/5 text-ink transition-colors hover:bg-white/10 xl:hidden"
             aria-expanded={open}
             aria-controls="mobile-menu"
             aria-label={open ? t.nav.closeMenu : t.nav.openMenu}
@@ -112,7 +112,7 @@ export default function Navbar() {
       <div
         id="mobile-menu"
         hidden={!open}
-        className="h-[calc(100dvh-4rem)] overflow-y-auto border-t border-line bg-night/95 px-5 pt-6 pb-10 backdrop-blur-xl sm:px-8 md:h-[calc(100dvh-5rem)] lg:hidden"
+        className="h-[calc(100dvh-4rem)] overflow-y-auto border-t border-line bg-night/95 px-5 pt-6 pb-10 backdrop-blur-xl sm:px-8 md:h-[calc(100dvh-5rem)] xl:hidden"
       >
         <ul className="flex flex-col gap-1">
           {links.map((l) => (
