@@ -14,11 +14,11 @@ import type { ClassKey, DamageType, Gender, Range } from '../i18n/content'
 import SectionHeading from './SectionHeading'
 
 const classes: { key: ClassKey; accent: string }[] = [
-  { key: 'fighter', accent: '#ff5d6c' },
-  { key: 'engineer', accent: '#4d8dff' },
+  { key: 'fighter', accent: '#ff8a3d' },
+  { key: 'engineer', accent: '#ff5d6c' },
   { key: 'medic', accent: '#4fe0a0' },
   { key: 'musician', accent: '#f4c76a' },
-  { key: 'hunter', accent: '#ff8a3d' },
+  { key: 'hunter', accent: '#4d8dff' },
   { key: 'gunner', accent: '#9b7bff' },
   { key: 'lancer', accent: '#6fd8ff' },
   { key: 'soulmage', accent: '#b76bff' },
