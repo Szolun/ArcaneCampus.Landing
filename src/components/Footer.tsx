@@ -35,6 +35,13 @@ export default function Footer() {
                 </a>
               </li>
             ))}
+            {[{ href: '/privacy/', label: t.footer.privacy }].map((l) => (
+              <li key={l.href}>
+                <a href={l.href} className="inline-flex min-h-11 items-center gap-2 text-ink transition-colors hover:text-gold">
+                  {l.label}
+                </a>
+              </li>
+            ))}
           </ul>
         </nav>
       </div>

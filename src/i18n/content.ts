@@ -115,6 +115,7 @@ export type Content = {
     links: string
     store: string
     community: string
+    privacy: string
     disclosure: string
     rights: string
     fanNote: string
@@ -398,6 +399,7 @@ export const content: Record<Locale, Content> = {
       links: 'Links',
       store: 'Página na Steam',
       community: 'Comunidade',
+      privacy: 'Política de privacidade',
       disclosure:
         'Divulgação de IA da Steam: alguns recursos visuais, incluindo ilustrações de personagens e elementos de interface das telas de criação e seleção, foram feitos com ferramentas de IA generativa.',
       rights: 'Arcane Campus © Szolun. Todos os direitos reservados.',
@@ -654,6 +656,7 @@ export const content: Record<Locale, Content> = {
       links: 'Links',
       store: 'Steam store page',
       community: 'Community hub',
+      privacy: 'Privacy policy',
       disclosure:
         'Steam AI disclosure: some visual assets, including character illustrations and interface elements used in character creation and selection screens, were made with generative AI tools.',
       rights: 'Arcane Campus © Szolun. All rights reserved.',
