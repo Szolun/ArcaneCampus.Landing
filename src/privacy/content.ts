@@ -1,5 +1,6 @@
 import type { Locale } from '../i18n/content'
 
+// Section ids are the same in both languages so links like /privacy/#rights work in either.
 // Keep this text in sync with what the game really collects (server, client and admin panel).
 export const DISCORD_URL = 'https://discord.gg/7BjBGyfJ3'
 
@@ -34,7 +35,7 @@ export const privacy: Record<Locale, PrivacyContent> = {
     ],
     sections: [
       {
-        id: 'dados-coletados',
+        id: 'data-collected',
         title: 'Dados que coletamos',
         blocks: [
           'Conta e login. O jogo não tem cadastro com e-mail ou senha. Você entra com uma conta de plataforma, e guardamos apenas o identificador que ela fornece:',
@@ -69,7 +70,7 @@ export const privacy: Record<Locale, PrivacyContent> = {
         ],
       },
       {
-        id: 'uso',
+        id: 'use',
         title: 'Como usamos os dados',
         blocks: [
           {
@@ -85,7 +86,7 @@ export const privacy: Record<Locale, PrivacyContent> = {
         ],
       },
       {
-        id: 'bases-legais',
+        id: 'legal-bases',
         title: 'Bases legais (LGPD)',
         blocks: [
           {
@@ -99,7 +100,7 @@ export const privacy: Record<Locale, PrivacyContent> = {
         ],
       },
       {
-        id: 'compartilhamento',
+        id: 'sharing',
         title: 'Com quem compartilhamos',
         blocks: [
           'Compartilhamos dados apenas com os serviços necessários para o jogo funcionar:',
@@ -116,14 +117,14 @@ export const privacy: Record<Locale, PrivacyContent> = {
         ],
       },
       {
-        id: 'transferencia',
+        id: 'transfers',
         title: 'Transferência internacional',
         blocks: [
           'Valve, Google e Cloudflare podem tratar dados em servidores fora do Brasil, principalmente nos Estados Unidos. Essas empresas adotam cláusulas e garantias de proteção de dados compatíveis com a LGPD.',
         ],
       },
       {
-        id: 'retencao',
+        id: 'retention',
         title: 'Por quanto tempo guardamos',
         blocks: [
           {
@@ -140,7 +141,7 @@ export const privacy: Record<Locale, PrivacyContent> = {
         ],
       },
       {
-        id: 'direitos',
+        id: 'rights',
         title: 'Seus direitos e exclusão da conta',
         blocks: [
           'Pela LGPD, você pode pedir a qualquer momento:',
@@ -160,7 +161,7 @@ export const privacy: Record<Locale, PrivacyContent> = {
         ],
       },
       {
-        id: 'seguranca',
+        id: 'security',
         title: 'Segurança',
         blocks: [
           'As conexões com o servidor usam HTTPS. Os servidores não ficam expostos diretamente à internet. As sessões de login são assinadas e guardadas só como código criptográfico. As cópias de segurança ficam em armazenamento privado. O acesso da equipe é restrito e registrado.',
@@ -168,7 +169,7 @@ export const privacy: Record<Locale, PrivacyContent> = {
         ],
       },
       {
-        id: 'criancas',
+        id: 'children',
         title: 'Crianças e adolescentes',
         blocks: [
           'O Arcane Campus não é destinado a menores de 13 anos, e não coletamos conscientemente dados de crianças. Adolescentes devem jogar com o conhecimento e a autorização dos pais ou responsáveis.',
@@ -176,21 +177,21 @@ export const privacy: Record<Locale, PrivacyContent> = {
         ],
       },
       {
-        id: 'site',
+        id: 'website',
         title: 'Este site',
         blocks: [
           'O site arcanecampus.com não usa cookies, anúncios nem ferramentas de análise. Ele só guarda no seu navegador o idioma escolhido. A hospedagem (GitHub Pages) e as fontes (Google Fonts) recebem tecnicamente o endereço IP de quem acessa, conforme as políticas desses serviços.',
         ],
       },
       {
-        id: 'alteracoes',
+        id: 'changes',
         title: 'Alterações nesta política',
         blocks: [
           'Podemos atualizar esta política quando o jogo mudar. A data no topo indica a versão atual. Mudanças importantes serão avisadas no jogo ou nos canais oficiais.',
         ],
       },
       {
-        id: 'contato',
+        id: 'contact',
         title: 'Contato',
         blocks: [
           `Para dúvidas sobre privacidade, pedidos sobre seus dados ou exclusão da conta, abra um ticket no Discord oficial do Arcane Campus: ${DISCORD_URL}`,
