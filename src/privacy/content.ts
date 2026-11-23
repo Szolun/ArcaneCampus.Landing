@@ -1,23 +1,10 @@
-import type { Locale } from '../i18n/content'
+import type { LegalDocs } from '../legal/types'
 
 // Section ids are the same in both languages so links like /privacy/#rights work in either.
 // Keep this text in sync with what the game really collects (server, client and admin panel).
 export const DISCORD_URL = 'https://discord.gg/7BjBGyfJ3'
 
-export type Block = string | { list: string[] }
-
-export type PrivacyContent = {
-  meta: { title: string; description: string }
-  home: string
-  eyebrow: string
-  title: string
-  updated: string
-  tocLabel: string
-  intro: Block[]
-  sections: { id: string; title: string; blocks: Block[] }[]
-}
-
-export const privacy: Record<Locale, PrivacyContent> = {
+export const privacy: LegalDocs = {
   pt: {
     meta: {
       title: 'Política de Privacidade — Arcane Campus',
