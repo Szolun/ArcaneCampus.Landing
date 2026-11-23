@@ -3,17 +3,16 @@ import { useLocale } from '../i18n/useLocale'
 import Footer from '../components/Footer'
 import LanguageToggle from '../components/LanguageToggle'
 import Logo from '../components/Logo'
-import { privacy, type Block } from './content'
+import type { Block, LegalDocs } from './types'
 
 // URLs written in the policy text become links.
 function linkify(text: string) {
-  return text.split(/(https:\/\/\S+)/).map((part, i) =>
+  return text.split(/(https:\/\/[^\s)]+)/).map((part, i) =>
     part.startsWith('https://') ? (
       <a
         key={i}
         href={part}
-        target="_blank"
-        rel="noopener noreferrer"
+        {...(part.startsWith('https://arcanecampus.com/') ? {} : { target: '_blank', rel: 'noopener noreferrer' })}
         className="break-all text-gold underline decoration-gold/40 underline-offset-4 hover:decoration-gold"
       >
         {part}
@@ -41,9 +40,9 @@ function renderBlock(block: Block, key: number) {
   )
 }
 
-export default function PrivacyPage() {
+export default function LegalPage({ docs }: { docs: LegalDocs }) {
   const { locale, t } = useLocale()
-  const p = privacy[locale]
+  const p = docs[locale]
 
   return (
     <>
